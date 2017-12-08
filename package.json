@@ -1,0 +1,25 @@
+{
+  "license": "MIT",
+  "scripts": {
+    "build:new": "run-s build:new:*",
+    "build:new:tsc-all": "tsc src/{a,b,d,e}.ts --outDir cjs --module commonjs",
+    "build:new:tsc-c": "tsc src/c.ts --outDir tmp --module es2015",
+    "build:new:common-module": "rollup tmp/c.js --output.format cjs --name c -o cjs/c.js",
+    "build:new:browserify": "run-p build:new:browserify:*",
+    "build:new:browserify:a": "browserify cjs/a.js -o bundle/a.js",
+    "build:new:browserify:b": "browserify cjs/b.js -o bundle/b.js",
+    "build:old": "run-s build:old:*",
+    "build:old:tsc": "tsc src/*.ts --outDir tmp2 --module commonjs",
+    "build:old:browserify": "run-p build:old:browserify:*",
+    "build:old:browserify:a": "browserify tmp2/a.js -o bundle/a.old.js",
+    "build:old:browserify:b": "browserify tmp2/b.js -o bundle/b.old.js"
+  },
+  "dependencies": {
+    "browserify": "^14.5.0",
+    "rollup": "^0.52.1",
+    "typescript": "^2.6.2"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.2"
+  }
+}

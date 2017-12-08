@@ -1,0 +1,10 @@
+<script>
+  function loadScript(name) {
+    const s = document.createElement('script')
+    s.src = 'bundle/' + name + '.js'
+    document.body.appendChild(s)
+  }
+</script>
+<button onClick="loadScript('a')">load a.js</button>
+<br />
+<button onClick="loadScript('a.old')">load a.old.js</button>
